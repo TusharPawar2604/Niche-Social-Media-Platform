@@ -11,6 +11,7 @@ const upload = require("./config/multer");
 const router = require('./routes/home');
 const authRouter = require('./routes/authRoutes');
 const postRoutes = require("./routes/postRoutes");
+const profileRoutes = require("./routes/profileRoutes");
 const fs = require('fs');
 
 app.set('view engine', 'ejs'); 
@@ -27,11 +28,12 @@ if (!fs.existsSync('uploads')) {
     fs.mkdirSync('uploads');
 }
 
-const PORT = process.env.PORT || 8000; 
+const PORT = process.env.PORT; 
 connectDB()
 app.use('/', router);
 app.use("/api", authRouter);
 app.use("/api/posts", postRoutes);
+app.use("/api/profile", profileRoutes); 
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 

@@ -9,8 +9,6 @@ const {
   getPostById,
   updatePost,
   deletePost,
-  likePost,
-  unlikePost,
 } = require("../controllers/postController");
 
 // Create new post with file upload
